@@ -19,17 +19,17 @@ export function Cart() {
     return (
       <>   
         <div className="cart-container">
+            <h1>Your Purchase</h1>
+            <button class="btn secondary btn-empty-cart" onClick={cartContext.clear}>Empty cart</button>
+            <div className="square-dots"><img src="/img/dots-sqare.svg" alt="" /></div>
           <div className="cart-content">
-            <h1>
-              Your Purchase
-            </h1>
 
-            <div className="cart__header">
+            {/* <div className="cart__header">
               <div className="col-product">Product</div>
               <div className="col-cantidad">Quantity</div>
               <div className="col-precio">Price</div>
               <div className="col-acciones"><button onClick={cartContext.clear}>Vaciar carrito</button></div>
-            </div>
+            </div> */}
       
             <div className="cart__list">
               {
@@ -45,7 +45,7 @@ export function Cart() {
                           <h2>
                             {item.name}
                           </h2>
-                          <p>Price: ${item.price}</p>
+                          <p>${item.price}</p>
                         </div>
                       </div>
       
@@ -62,7 +62,9 @@ export function Cart() {
                       </div>
       
                       <div className="cart__item__accion">
-                        <button onClick={() => cartContext.removeItem(item.id)}>X</button>
+                        <button onClick={() => cartContext.removeItem(item.id)}>
+                          <img src="/img/icon-trash.svg" alt="Remove from cart" />
+                        </button>
                       </div>
                     </div>
                   )
@@ -76,23 +78,30 @@ export function Cart() {
                   <Link to={'/'}>Add more products</Link>
               </button>
 
-              <div className="cart-total">Total: {cartContext.getSubTotalPrice()}</div>
+              <div className="cart-total"><span>Total:</span> {cartContext.getSubTotalPrice()}</div>
             </div>
           </div>
-        
-          <div className="checkout-container">
-            <h4>Your Information</h4>
-            <p>Completá tus datos para finalizar la compra</p>
+          
+        </div>
+
+        <div className="checkout-container">
+          <div className="bg-checkout">
+            <img src="/img/bg-checkout.png" alt="" />
+          </div>
+            <h3>Your Information</h3>
+            <p>Please fill the following form to complete your purchase.</p>
             <div className="form">
-              <input type="email" placeholder="Email" onInput={(e) => {setEmail(e.target.value)}} />
-              <input type="tel" placeholder="Phone" onInput={(e) => {setPhone(e.target.value)}} />
-              <input type="text" placeholder="Name" onInput={(e) => {setName(e.target.value)}} />
+              <label htmlFor="Name">Name</label>
+              <input type="text" placeholder="First name + Last name" onInput={(e) => {setName(e.target.value)}} />
+              <label htmlFor="Email">Email</label>
+              <input type="email" placeholder="xxxxx@xxxx.xxx" onInput={(e) => {setEmail(e.target.value)}} />
+              <label htmlFor="Phone">Phone</label>
+              <input type="tel" placeholder="+xxx xxx xxx" onInput={(e) => {setPhone(e.target.value)}} />
             </div>
 
             <button className="btn" onClick={() => { cartContext.createOrder(name, phone, email) }}>Checkout</button>
 
           </div>
-        </div>
 
         
       </>

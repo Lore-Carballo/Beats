@@ -12,9 +12,7 @@ export const NavBar = (item) => {
         const waitForData = async () => {
             let data = await getCategories();
             
-            setTimeout(() => {
-                setCategories(data);
-            }, 200);
+            setCategories(data);
         }
         waitForData();
 

@@ -1,0 +1,68 @@
+@import '../../sass/styles'
+
+.categories-cards-container
+    width: 90%
+    padding: 0 0 0 3%
+    +flexbox(row, wrap, center, flex-start, flex-start)
+    position: absolute 
+    bottom: 0
+    .category-card 
+        width: 31% 
+        margin: 0 1% 2em 1%
+        background: rgba($main-color, 0.2)
+        border-radius: 20px
+        padding: 2em
+        border: 1px solid $main-color 
+        color: $white
+        +flexbox(row, wrap, space-between, center, center)
+        position: relative
+        transition: all 0.5s ease
+        &:hover
+            transform: translateX(1em)
+            .category-card-img  
+                &::before 
+                    transform: scale(0)
+                img 
+                    transform: scale(1.1)
+            .category-card-txt
+                h4 
+                    color: $white
+        .category-card-img 
+            width: 8em 
+            height: 8em 
+            border-radius: 100%
+            position: absolute 
+            top: -1em 
+            left: -1em
+            &::before 
+                content: '' 
+                width: 100%
+                height: 100%
+                border-radius: 100%
+                background: $white
+                position: absolute
+                top: 0 
+                left: 0
+                transition: all 0.5s ease-out
+                z-index: 0
+            img 
+                position: relative 
+                z-index: 1
+                transition: all 0.5s ease-out
+        .category-card-txt
+            width: calc(100% - 7em)
+            margin-left: 7em
+            text-align: left
+            h4 
+                font-size: 150%
+                color: $main-color
+                width: 60%
+                line-height: 1.1
+                transition: all 0.5s ease
+            p 
+                font-size: 90%
+                text-transform: uppercase 
+                margin-top: 1em
+                letter-spacing: 1px
+        &:hover 
+

@@ -12,7 +12,7 @@
             &::before 
                 transform: scale(0)
             img 
-                transform: translateY(0)
+                transform: scale(1.1)
     .product-img 
         width: 15vw
         height: 15vw 
@@ -30,8 +30,10 @@
             top: 0 
             left: 0
             transition: all 0.5s ease-out
+            z-index: 0
         img 
-            transform: translateY(2em)
+            position: relative 
+            z-index: 1
             transition: all 0.5s ease-out
     .product-info 
         width: 80%

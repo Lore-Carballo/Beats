@@ -2,6 +2,9 @@
 
 
 .home-container
+    header 
+        &::before 
+            display: none
     .menu
         a
             color: $white!important
@@ -9,7 +12,7 @@
         width: 100%
         height: auto 
         min-height: 100vh
-        padding: 3em 7% 10em 7%
+        padding: 3em 7% 17em 7%
         +flexbox(row, wrap, center, center, center)
         position: relative
         .home-bg
@@ -28,7 +31,7 @@
             .home-bg-color
                 width: 21%
                 margin-left: 7%
-                margin-bottom: 20vh
+                margin-bottom: 36vh
                 opacity: 0
                 animation: slideTop 1.5s 1s linear forwards
             .home-bg-txt
@@ -48,7 +51,7 @@
                     animation: slideRight 1s 1.5s linear forwards
                 &.right 
                     left: 45%
-                    bottom: 5em 
+                    bottom: 22em 
                     animation: slideRight 1s 2s linear forwards
                 span 
                     width: 100%

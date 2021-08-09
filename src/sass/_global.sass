@@ -20,6 +20,8 @@ body
 
 a 
     text-decoration: none
+    &:visited 
+        color: inherit
 
 img 
     width: 100%
@@ -50,10 +52,14 @@ img
         text-decoration: none 
         color: inherit
     &.secondary
-        background: $dark-gray
-        padding: 0
+        background: transparent 
+        border: 1px solid $black 
+        color: $black
+        padding: 0.5em 1em
+        font-weight: 200
         &:hover 
             background: $black
+            color: $white
     &.no-link
         padding: 0.5em 1em 
         
@@ -76,6 +82,9 @@ button
 
 .loading-gif
     mix-blend-mode: lighten
+    position: fixed 
+    top: 15vh 
+    left: 43%
 
 //ANIMATIONS
 .float

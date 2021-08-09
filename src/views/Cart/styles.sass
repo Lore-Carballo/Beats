@@ -1,13 +1,56 @@
 @import '../../sass/styles'
 
 .cart-container
-    width: 100%
-    padding: 7em 3em
+    width: calc(100% - 2em)
+    margin-left: 2em
+    padding: 10em 10%
     +flexbox(row, wrap, space-between, flex-start, flex-start)
     background: $off-white
     color: $black
+    position: relative
+    .square-dots
+        position: absolute
+        top: 16em
+        right: 12%
+        width: 10vw
+        filter: invert(1)
+        z-index: 0
+    .btn-empty-cart
+        position: absolute 
+        top: 13em
+        right: 12%
+        min-width: 1px
+        padding: 0.5em 2em
+        z-index: 1
+    h1 
+        text-align: left
+        margin-bottom: 0.2em
+        font-size: 350%
+        width: 100%
+        padding-right: 70%
+        padding-bottom: 0.5em
+        line-height: 1.1
+        font-weight: 900
+        position: relative
+        &::before 
+            content: ''
+            width: 40%
+            height: 1px 
+            background: $black 
+            position: absolute 
+            right: 0
+            bottom: 0
+        &::after 
+            content: ''
+            width: 10%
+            height: 0.5em 
+            background: $main-color 
+            position: absolute 
+            bottom: 0
+            right: 0
     .cart-content
-        width: 65%
+        width: 80%
+        marign-right: 20%
         +flexbox(row, wrap, space-between, flex-start, flex-start)
         .cart__header
             width: 100%
@@ -18,7 +61,7 @@
             font-weight: 700
             color: $dark-gray
             .col-product
-                width: 50%
+                width: 55%
                 text-align: left
                 padding: 0 0.5em        
             .col-cantidad
@@ -44,64 +87,121 @@
                 +flexbox(row, wrap, space-between, center, center)
                 border-bottom: 1px solid rgba($black, 0.2)
                 .cart__item__producto
-                    width: 50%
+                    width: 55%
                     padding: 0 0.5em
                     +flexbox(row, wrap, flex-start, center, center)
                     .cart__item__img
-                        width: 10%
+                        width: 35%
                     .cart__item__info
-                        width: 85%
-                        margin-left: 5%
+                        width: 55%
+                        margin-left: 10%
                         text-align: left
+                        h2 
+                            font-size: 200%
+                            line-height: 1.1
+                            font-weight: 700
+                        p 
+                            font-size: 180%
+                            font-weight: 700
+                            margin-top: 0.5em
                 .cart__item__cantidad
                     width: 15%
+                    font-size: 200%
+                    font-weight: 700
                 .cart__item__precio
                     width: 15%
+                    font-size: 200%
+                    font-weight: 700
                 .cart__item__accion
                     width: 10%
                     button
-                        border: 1px solid $error
-                        color: $error
-                        background: none
-                        width: 2em
-                        height: 2em
+                        background: $main-color
+                        border: none
+                        width: 4em
+                        height: 4em
                         font-size: 60%
                         border-radius: 50%
                         text-align: center
-                        padding: 0
+                        padding: 1.2em
                         margin: 0!important
                         font-weight: 700
                         transition: all 0.3s ease
                         &:hover
                             background: $error
                             color: $white
+                            img 
+                                filter: brightness(0) invert(1)
                         
         .cart__footer
             width: 100%
             +flexbox(row, wrap, space-between, center, center)
             button 
                 width: auto
-                margin: 0!important
+                margin: 1em 0!important
             .cart-total
-                width: 45%
+                font-size: 200%
+                font-weight: 700
+                width: 44%
+                span 
+                    font-size: 50%
 .checkout-container
-    width: 30%
-    background: $light-gray
-    border-radius: 10px
-    padding: 1em
+    width: 100%
+    padding: 5em 9% 15em 9%
     text-align: left
+    position: relative 
+    &::before 
+        content: ''
+        width: 9em
+        height: 9em 
+        background: $main-color 
+        position: absolute 
+        top: -9em 
+        right: 10%
+    &::after 
+        content: 'just one step away from a new experience of sound'
+        width: 13em 
+        height: auto 
+        position: absolute 
+        top: -7em 
+        right: 13%
+        color: $black 
+        text-transform: uppercase 
+        letter-spacing: 1px 
+        font-size: 80%
+    .bg-checkout
+        width: 50%
+        position: absolute 
+        top: 10%
+        right: -10%
+        opacity: 0.7
+    h3 
+        font-size: 300%
+        width: 30%
     p
-        font-size: 85%
-        margin-top: 0.5em
+        width: 30%
+        font-size: 110%
+        margin-top: 1.5em
     .form 
-        width: 100%
-        margin: 1em 0
+        width: 50%
+        margin: 3em 0
+        label 
+            width: 100%
+            text-transform: uppercase
+            color: $main-color
+            font-size: 90%
+            letter-spacing: 1px
         input 
             width: 100%
             padding: 0.5em 
-            margin-bottom: 0.5em
+            margin-bottom: 1.5em
             background: none
-            border: 1px solid rgba($dark-gray, 0.5)
-            border-radius: 5px
+            border: none
+            border-bottom: 1px solid $white
+            color: $white 
+            font-size: 110%
+            &:focus 
+                border-bottom: 2px solid $main-color
+                outline: none
     button 
-        width: 100%
+        width: 15%
+        margin-left: 30%!important

@@ -22,9 +22,7 @@ export const CategoryPage = (props) => {
                 description: data.description,
             };
 
-            setTimeout(() => {
-                setCategory(aux);
-            }, 2000);
+            setCategory(aux);
         }
         waitForData();
     }, [])

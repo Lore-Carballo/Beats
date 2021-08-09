@@ -1,5 +1,6 @@
 import './styles.sass';
 import { ItemListContainer } from "../ItemListContainer";
+import { CategoryCards } from "../../components/CategoryCards";
 import { Link } from 'react-router-dom';
 
 export const HomeContent = () => {
@@ -32,7 +33,13 @@ export const HomeContent = () => {
                     <button className="btn"><Link to={'/category/solo-wireless'}>Learn More</Link></button>
                 </div>
             </div>
+
+            <div className="categories-access">
+                <CategoryCards />
+            </div>
         </div>   
+
+        
         
         <div className="home-products">
             <h3>
