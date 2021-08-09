@@ -1,0 +1,123 @@
+@import '../../sass/styles'
+
+.cart-widget 
+    width: 3em 
+    height: 3em
+    position: fixed
+    top: 1em
+    right: 5%
+    z-index: 2500
+    &:hover
+        .minicart
+            visibility: visible
+            opacity: 1
+            transform: translateY(0)
+
+.cart-icon
+    display: block
+    width: 3em 
+    height: 3em 
+    border-radius: 50%
+    background: $main-color
+    padding: 0.7em
+    position: relative
+    transition: all 0.3s ease
+    img 
+        transition: all 0.3s ease
+    &:hover 
+        cursor: pointer 
+        background: $black
+        img 
+            transform: scale(0.9)
+            filter: invert(1)
+    span 
+        width: 1.7em 
+        height: 1.7em 
+        border-radius: 50%
+        background: $error
+        color: $white
+        position: absolute 
+        bottom: 0
+        right: -0.7em
+        padding: 0.1em
+        font-size: 70%
+
+.minicart
+    width: 20vw
+    background: $white
+    color: $black
+    padding: 1em 
+    border-radius: 10px
+    position: absolute
+    top: 100%
+    right: 0
+    z-index: 1000
+    box-shadow: 10px 10px 32px 0px rgba(0,0,0,0.36)
+    transition: all 0.3s ease
+    visibility: hidden
+    opacity: 0
+    transform: translateY(-10px)
+    &::before 
+        content: ''
+        width: 0
+        height: 0
+        border-style: solid
+        border-width: 0 7.5px 10px 7.5px
+        border-color: transparent transparent #ffffff transparent
+        position: absolute
+        top: -10px
+        right: 15px
+    .cart__footer
+        width: 100%
+        button
+            width: 100%
+            margin: 0!important
+            padding: 0.2em
+    .cart__list 
+        width: 100%
+        .cart__item
+            width: 100%
+            margin: 1em 0
+            padding: 0 0 1em 0
+            +flexbox(row, wrap, space-between, center, center)
+            border-bottom: 1px solid rgba($black, 0.2)
+            position: relative
+            .cart__item__producto
+                width: 100%
+                padding: 0 0.5em
+                +flexbox(row, wrap, flex-start, flex-start, flex-start)
+                .cart__item__img
+                    width: 30%
+                .cart__item__info
+                    width: 60%
+                    margin-left: 10%
+                    padding-right: 2em
+                    text-align: left
+                    h2 
+                        font-size: 90%
+                        line-height: 1.2
+                        margin-bottom: 1em
+                    p 
+                        font-size: 70%
+                        text-align: right
+                        &.price 
+                            font-size: 100%
+            button
+                background: none
+                border: none
+                width: auto
+                padding: 0
+                font-size: 55%
+                margin: 0!important
+                position: absolute
+                top: 0
+                right: 0
+                border-radius: 50%
+                border: 1px solid $error
+                color: $error
+                width: 1.5em
+                height: 1.5em
+                text-align: center
+                opacity: 0.6
+                &:hover
+                    opacity: 1

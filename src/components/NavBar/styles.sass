@@ -1,0 +1,57 @@
+@import '../../sass/styles'
+
+header
+    width: 100%
+    padding: 0 10% 0 0
+    +flexbox(row, wrap, space-between, center, center)
+    position: fixed
+    top: 0
+    left: 0
+    z-index: 2000
+    .logo 
+        width: 20%
+        background: $main-color
+        padding: 1em 1em 1em 7%
+        a
+            width: 100%
+            display: block
+            text-align: left
+            img
+                width: 3em
+                margin: 0
+                transition: all 0.3s ease
+                &:hover 
+                    transform: scale(0.9)
+    nav 
+        width: 60%
+        +flexbox(row, wrap, flex-end, center, center)
+        ul 
+            width: auto
+            +flexbox(row, wrap, flex-end, center, center)
+            margin-right: 2em
+            li 
+                width: auto 
+                display: inline-block
+                margin: 0 1em
+                font-weight: 500
+                font-size: 90%
+                a
+                    color: $dark-gray
+                    text-decoration: none
+                    padding: 0.5em 0
+                    position: relative
+                    overflow: hidden 
+                    display: block
+                    &::before 
+                        content: ''
+                        width: 100%
+                        height: 2px 
+                        background: $main-color
+                        position: absolute
+                        bottom: 0 
+                        left: 0
+                        transition: all 0.3s ease
+                        transform: translateX(-105%)
+                    &:hover 
+                        &::before 
+                            transform: translateX(0)

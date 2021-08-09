@@ -1,0 +1,129 @@
+*
+    width: 100%
+    padding: 0
+    margin: 0
+    box-sizing: border-box!important
+
+body 
+    background: $black 
+    color: $white
+    position: relative
+    min-height: 150vh
+    &::before
+        content: ''
+        width: 2em 
+        height: 100%
+        position: absolute
+        top: 0
+        left: 0
+        background: $main-color
+
+a 
+    text-decoration: none
+
+img 
+    width: 100%
+    margin: 0 auto
+
+.hide
+    display: none
+.block
+    display: block
+
+.btn 
+    width: auto 
+    min-width: 20% 
+    margin: 2em auto
+    background: $main-color 
+    color: $black
+    font-weight: 700 
+    border-radius: 50px
+    border: none
+    transition: all 0.3s ease
+    &:hover 
+        background: $dark-gray
+        color: $white
+    a 
+        width: 100%
+        display: block 
+        padding: 0.5em 1em 
+        text-decoration: none 
+        color: inherit
+    &.secondary
+        background: $dark-gray
+        padding: 0
+        &:hover 
+            background: $black
+    &.no-link
+        padding: 0.5em 1em 
+        
+
+button 
+    padding: 1em
+    margin: 2em auto 0 auto!important
+    &:hover 
+        cursor: pointer
+
+.page-content
+    width: 100%
+    min-height: 100vh
+    background: $light-gray
+    padding: 3em 5vw
+    color: #394149
+    h1 
+        span
+            color: $secondary-color
+
+.loading-gif
+    mix-blend-mode: lighten
+
+//ANIMATIONS
+.float
+	transform: translateY(0px) rotateZ(0deg)
+	transition: all 1s ease
+	img
+		animation-name: float
+		animation-duration: 5s
+		animation-iteration-count: infinite
+		animation-timing-function: ease-out
+
+@keyframes float
+	from
+		transform: translate(0, 0px)
+	65%
+		transform: translate(0, 1em)
+	to
+		transform: translate(0, -0px)
+
+@keyframes slideRight 
+	from
+		transform: translateX(-5vw)
+		opacity: 0
+	to
+		transform: translateX(0)
+		opacity: 1
+
+@keyframes slideTop 
+	from
+		transform: translateY(5vw)
+		opacity: 0
+	to
+		transform: translateY(0)
+		opacity: 1
+
+@keyframes slideBottom 
+	from
+		transform: translateY(-5vw)
+		opacity: 0
+	to
+		transform: translateY(0)
+		opacity: 1
+
+@keyframes slideUp 
+	from
+		transform: translateY(5vw)
+		opacity: 0
+	to
+		transform: translateY(0)
+		opacity: 1
+

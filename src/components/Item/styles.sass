@@ -1,0 +1,59 @@
+@import '../../sass/styles'
+
+.product-card
+    width: 30%
+    margin-bottom: 2em
+    padding: 0
+    transition: all 0.3s ease
+    &:hover 
+        transform: translateY(-0.5em)
+        cursor: pointer
+        .product-img 
+            &::before 
+                transform: scale(0)
+            img 
+                transform: translateY(0)
+    .product-img 
+        width: 15vw
+        height: 15vw 
+        margin: 0 auto
+        padding: 2em
+        +flexbox(row, wrap, center, center, center)
+        position: relative 
+        &::before 
+            content: '' 
+            width: 100%
+            height: 100%
+            border-radius: 100%
+            background: $white
+            position: absolute
+            top: 0 
+            left: 0
+            transition: all 0.5s ease-out
+        img 
+            transform: translateY(2em)
+            transition: all 0.5s ease-out
+    .product-info 
+        width: 80%
+        margin: 3em auto
+        text-align: center
+        .product-title 
+            color: $white
+            font-size: 180%
+            transition: all 0.3s ease
+            &:hover 
+                color: $main-color
+        .product-excerpt 
+            margin: 1em 0
+            font-size: 85%
+        .product-price 
+            font-size: 150%
+            font-weight: 700
+        .see-product 
+            margin-top: 1em!important
+            width: auto
+            font-size: 100%
+            padding: 0.5em 1.5em
+            &:hover 
+                background: $white 
+                color: $black

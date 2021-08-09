@@ -1,0 +1,107 @@
+@import '../../sass/styles'
+
+.cart-container
+    width: 100%
+    padding: 7em 3em
+    +flexbox(row, wrap, space-between, flex-start, flex-start)
+    background: $off-white
+    color: $black
+    .cart-content
+        width: 65%
+        +flexbox(row, wrap, space-between, flex-start, flex-start)
+        .cart__header
+            width: 100%
+            +flexbox(row, wrap, space-between, center, center)
+            padding-bottom: 1em
+            margin-bottom: 1em
+            border-bottom: 1px solid rgba($black, 0.5)
+            font-weight: 700
+            color: $dark-gray
+            .col-product
+                width: 50%
+                text-align: left
+                padding: 0 0.5em        
+            .col-cantidad
+                width: 15%
+            .col-precio 
+                width: 15%
+            .col-acciones 
+                width: 10%
+                button
+                    margin: 0!important
+                    padding: 0.5em!important
+                    border-radius: 6px
+                    border: 1px solid $black
+                    outline: none
+                    font-size: 75%
+                    background: rgba($dark-gray, 0.4)
+        .cart__list 
+            width: 100%
+            .cart__item
+                width: 100%
+                margin: 1em 0
+                padding: 0 0 1em 0
+                +flexbox(row, wrap, space-between, center, center)
+                border-bottom: 1px solid rgba($black, 0.2)
+                .cart__item__producto
+                    width: 50%
+                    padding: 0 0.5em
+                    +flexbox(row, wrap, flex-start, center, center)
+                    .cart__item__img
+                        width: 10%
+                    .cart__item__info
+                        width: 85%
+                        margin-left: 5%
+                        text-align: left
+                .cart__item__cantidad
+                    width: 15%
+                .cart__item__precio
+                    width: 15%
+                .cart__item__accion
+                    width: 10%
+                    button
+                        border: 1px solid $error
+                        color: $error
+                        background: none
+                        width: 2em
+                        height: 2em
+                        font-size: 60%
+                        border-radius: 50%
+                        text-align: center
+                        padding: 0
+                        margin: 0!important
+                        font-weight: 700
+                        transition: all 0.3s ease
+                        &:hover
+                            background: $error
+                            color: $white
+                        
+        .cart__footer
+            width: 100%
+            +flexbox(row, wrap, space-between, center, center)
+            button 
+                width: auto
+                margin: 0!important
+            .cart-total
+                width: 45%
+.checkout-container
+    width: 30%
+    background: $light-gray
+    border-radius: 10px
+    padding: 1em
+    text-align: left
+    p
+        font-size: 85%
+        margin-top: 0.5em
+    .form 
+        width: 100%
+        margin: 1em 0
+        input 
+            width: 100%
+            padding: 0.5em 
+            margin-bottom: 0.5em
+            background: none
+            border: 1px solid rgba($dark-gray, 0.5)
+            border-radius: 5px
+    button 
+        width: 100%

@@ -1,0 +1,17 @@
+@import '../../sass/styles'
+
+.item-count 
+    width: 60%
+    margin: 2em auto 1em auto
+    +flexbox(row, wrap, center, stretch, stretch)
+    .counter-btn
+        width: 30%
+        text-align: center
+        margin: 0!important
+    .counter-cantidad
+        width: 40%
+        text-align: center
+        border-top: 1px solid rgba($black, 0.5)
+        border-bottom: 1px solid rgba($black, 0.5)
+        +flexbox(row, wrap, center, center, center)
+        font-size: 85%

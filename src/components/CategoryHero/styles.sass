@@ -1,0 +1,46 @@
+@import '../../sass/styles'
+
+.category-hero 
+    width: 100%
+    height: 100vh
+    padding-left: 2em
+    min-height: 100vh
+    +flexbox(row, wrap, space-between, stretch, stretch)
+    background: $off-white
+    color: $black
+    .category-hero-img
+        width: 40%
+        position: relative
+        animation: slideBottom 1s linear forwards
+        &::after 
+            content: ''
+            width: 2em 
+            height: 20vh 
+            background: $main-color 
+            position: absolute 
+            top: 10em 
+            right: -1em
+    .category-hero-info
+        width: 50%
+        margin-right: 10%
+        height: 100%
+        text-align: left
+        padding: 5em 10% 5em 5em
+        +flexbox(row, wrap, flex-start, center, center)
+        h1 
+            font-size: 380%
+            width: 80%
+            line-height: 1.1
+            opacity: 0
+            animation: slideRight 1s linear forwards
+        p 
+            width: 80%
+            font-size: 110%
+            margin-top: 1em 
+            line-height: 1.3
+            opacity: 0
+            animation: slideRight 1.5s linear forwards
+        button 
+            margin-top: 4em!important
+            opacity: 0
+            animation: slideRight 2s linear forwards
