@@ -138,8 +138,14 @@ const Cart = () => {
      <>
       { ordenCompletada ? (
       <>
-      <h1>Complestaste tu orden</h1>
-      <h2>{ordenCompletada}</h2>
+        <section className="complete-order">
+          <h1>¡Thanks for your purchase!</h1>
+          <p>Your order number is: <strong>#{ordenCompletada}</strong> </p>
+
+          <button className="btn add-cart">
+              <Link to={'/'}>Back to store</Link>
+          </button>
+        </section>
       </>
      ) :
     (
