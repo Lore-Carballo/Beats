@@ -2,25 +2,50 @@ import './styles.sass';
 import { useContext, useState, useEffect} from 'react';
 import { Link } from "react-router-dom";
 import { CartContext } from '../../context';
-
-export function Cart() {
+import firebase from "firebase/app";
+import "@firebase/firestore";
+import { getFirestore } from '../../firebase/client';
+const Cart = () => {
   const cartContext = useContext(CartContext); //Context (Estado Global y métodos globales) del Carrito
   const [cartQty, setCartQty] = useState(0)
-
-  const[name, setName] = useState('');
-  const[email, setEmail] = useState('');
-  const[phone, setPhone] = useState('');
-
+  const [ordenCompletada, setOrdenCompletada] = useState(false)
+  const initialState = {
+    nombre: "",
+    telefono: "",
+    email: "",
+    productos: cartContext.cart,
+    total: cartContext.getTotalPrice()
+  };
+  const [values, setValues] = useState(initialState);
+  const DB = getFirestore();
+  
+  const handleOnChange = (e) => {
+    const { name, value } = e.target;
+    setValues({ ...values, [name]: value });
+  };
+  const handleOnSubmit = async (e) => {
+    e.preventDefault();
+    const ordenId = await addOrder(values);
+    setOrdenCompletada(ordenId);
+  };
+  console.log(cartContext.cart)
+  
+  const addOrder = async (orden) => {
+    const DB = getFirestore();
+    const ordenCreada = await DB.collection("orders").add(orden);
+    cartContext.setCart([]);
+    return ordenCreada.id;
+  };
   useEffect(() => {
     setCartQty(cartContext.getTotalQty())
   }, [cartContext.cart])
-
+ 
   if (cartQty > 0) {
     return (
       <>   
         <div className="cart-container">
             <h1>Your Purchase</h1>
-            <button class="btn secondary btn-empty-cart" onClick={cartContext.clear}>Empty cart</button>
+            <button className="btn secondary btn-empty-cart" onClick={cartContext.clear}>Empty cart</button>
             <div className="square-dots"><img src="/img/dots-sqare.svg" alt="" /></div>
           <div className="cart-content">
 
@@ -90,16 +115,17 @@ export function Cart() {
           </div>
             <h3>Your Information</h3>
             <p>Please fill the following form to complete your purchase.</p>
-            <div className="form">
+            <form className="form" onSubmit={handleOnSubmit}>
               <label htmlFor="Name">Name</label>
-              <input type="text" placeholder="First name + Last name" onInput={(e) => {setName(e.target.value)}} />
+              <input type="text" placeholder="First name + Last name" name="nombre" onChange={handleOnChange} value={values.nombre} />
               <label htmlFor="Email">Email</label>
-              <input type="email" placeholder="xxxxx@xxxx.xxx" onInput={(e) => {setEmail(e.target.value)}} />
+              <input type="email" placeholder="xxxxx@xxxx.xxx" name="email" onChange={handleOnChange} value={values.email} />
               <label htmlFor="Phone">Phone</label>
-              <input type="tel" placeholder="+xxx xxx xxx" onInput={(e) => {setPhone(e.target.value)}} />
-            </div>
+              <input type="tel" placeholder="+xxx xxx xxx" name="telefono" onChange={handleOnChange} value={values.telefono}/>
+              <button type="submit" className="btn">Checkout</button>    
+            </form>
 
-            <button className="btn" onClick={() => { cartContext.createOrder(name, phone, email) }}>Checkout</button>
+          
 
           </div>
 
@@ -109,7 +135,15 @@ export function Cart() {
   }
   else {
     return (
-    
+     <>
+      { ordenCompletada ? (
+      <>
+      <h1>Complestaste tu orden</h1>
+      <h2>{ordenCompletada}</h2>
+      </>
+     ) :
+    (
+      <>
       <div className="cart-container">
         <div className="empty-cart">
           <p>Your cart is empty</p>
@@ -118,9 +152,14 @@ export function Cart() {
           </button>
         </div>
       </div>
-         
+      </>
+    )
+  }
+  </>
+          
     )
   }
 
   
 }
+export default Cart

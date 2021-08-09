@@ -13,7 +13,8 @@ export const ItemDetail = ({ item }) => {
   const [itemsQ, setItemsQ] = useState(initial); // items seleccionados antes de enviar al carrito
   const [maxStock, setMaxStock] = useState(item.stock - stockInCart ); //stock máximo y se le restan la cantidad ya agregada al carrito
   const availableStock = maxStock - itemsQ ; // stock disponible, stock máximo menos la cantidad actual seleccionada
-
+  const prodCart = {name: item.name, price: item.price, productimg: item.productimg, id: item.id, stock: item.stock, quantity: itemsQ};
+  console.log (prodCart)
   const onAdd = () => {
     if (itemsQ >= maxStock) {
       return;
@@ -34,7 +35,7 @@ export const ItemDetail = ({ item }) => {
   const handleClick = () => setviewCart('show');
 
   const onAddToCart = () => {
-    cartContext.addItem(item, itemsQ);
+    cartContext.addItem(prodCart, itemsQ);
     setMaxStock(maxStock - itemsQ);
     setItemsQ(0);
 

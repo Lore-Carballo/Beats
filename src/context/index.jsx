@@ -8,13 +8,13 @@ export const CartContext = createContext();
 export function CartProvider({ children }) {
 
   const [cart, setCart] = useState([]);
-
+  console.log (cart)
   const addItem = (item, quantity) => {
 
     if (isInCart(item.id)) {
-      const elementIndex = cart.findIndex(element => element.item.id == item.id);
+      const elementIndex = cart.findIndex(element => element.item.id === item.id);
       let cartCopy = [...cart];
-      const cartItem = cart.find(element => element.item.id == item.id);
+      const cartItem = cart.find(element => element.item.id === item.id);
       cartItem.quantity += quantity;
       cartCopy[elementIndex] = cartItem;
       setCart(cartCopy);
@@ -67,7 +67,7 @@ export function CartProvider({ children }) {
 
 
   const isInCart = (itemId) => {
-    let item = cart.find(element => element.item.id == itemId);
+    let item = cart.find(element => element.item.id === itemId);
     if (!!item) {
       return true;
     }
@@ -77,7 +77,7 @@ export function CartProvider({ children }) {
   }
 
   const getItemQty = (itemId) => {
-    let item = cart.find(element => element.item.id == itemId);
+    let item = cart.find(element => element.item.id === itemId);
     if (!!item) {
       return item.quantity;
     }
@@ -93,24 +93,24 @@ export function CartProvider({ children }) {
     });
   }
 
-  const createOrder = (name, phone, email) => {
-    const order = { 
-      buyer: 
-        {name, phone, email}, 
-        item: cart, 
-        total: getSubTotalPrice(), 
-        fecha: firebase.firestore.Timestamp.fromDate(new Date())
-    }
+  // const createOrder = (name, phone, email) => {
+  //   const order = { 
+  //     buyer: 
+  //       {name, phone, email}, 
+  //       item: cart, 
+  //       total: getSubTotalPrice(), 
+  //       fecha: firebase.firestore.Timestamp.fromDate(new Date())
+  //   }
 
-    const db = getFirestore();
-    db.collection("Orders").add(order);
+  //   const db = getFirestore();
+  //   db.collection("Orders").add(order);
 
-    setCart([]);
+  //   setCart([]);
 
-  }
+  // }
 
   return (
-    <CartContext.Provider value={{ cart, setCart, addItem, removeItem, clear, isInCart, getItemQty, getTotalQty, getSubTotalPrice, getTotalPrice, createOrder }}>
+    <CartContext.Provider value={{ cart, setCart, addItem, removeItem, clear, isInCart, getItemQty, getTotalQty, getSubTotalPrice, getTotalPrice }}>
       {children}
     </CartContext.Provider>
   )

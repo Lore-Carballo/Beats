@@ -22,7 +22,7 @@ export async function getProducts() {
 
 export async function getProductDetail(id) {
     const products = await getProducts();
-    const product = products.find(element => element.id == id);
+    const product = products.find(element => element.id === id);
     return product;
 }
 
@@ -37,12 +37,12 @@ export async function getCategories() {
 
 export async function getCategoryDetail(id) {
     const categories = await getCategories();
-    const category = categories.find(element => element.id == id);
+    const category = categories.find(element => element.id === id);
     return category;
 }
 
 export async function getProductsByCategory(category) {
     const products = await getProducts();
-    const filteredProducts = products.filter(element => element.category == category);
+    const filteredProducts = products.filter(element => element.category === category);
     return filteredProducts;
 }

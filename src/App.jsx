@@ -8,7 +8,7 @@ import { CategoryPage } from "./views/CategoryPage";
 import { ItemListContainer } from "./views/ItemListContainer";
 import { ItemDetailContainer } from "./views/ItemDetailContainer";
 import { CartWidget } from "./components/CartWidget";
-import { Cart } from "./views/Cart";
+import Cart from './views/Cart/index.jsx'
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { CartProvider } from './context';
 
